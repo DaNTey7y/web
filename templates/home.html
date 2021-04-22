@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Привет</h1>
+    <div class="create-thread">
+        <a class="create-thread">
+            <h1>Создать тред</h1>
+        </a>
+    </div>
+    {% for thread in threads %}
+
+    {% endfor %}
 {% endblock %}

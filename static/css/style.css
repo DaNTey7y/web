@@ -1,8 +1,19 @@
+nav {
+    margin-left: 20px;
+    font-size: 150%;
+}
+
 nav a {
     color: #c9720e;
     margin-left: 5px;
 }
 
 main {
-    margin-top: 30px;
+    margin-top: 15px;
+}
+
+.create-thread {
+    text-align: center;
+    color: #c9720e;
+    margin-bottom: 50px;
 }

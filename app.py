@@ -5,7 +5,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('base.html', title='Три.ч')
+    param = dict()
+    param['title'] = 'Три.ч'
+    return render_template('home.html', **param)
 
 
 if __name__ == '__main__':

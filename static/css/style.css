@@ -17,3 +17,11 @@ main {
     color: #c9720e;
     margin-bottom: 50px;
 }
+
+.btn btn-primary {
+    color: #c9720e;
+}
+
+body {
+    background-color: #dedede;
+}

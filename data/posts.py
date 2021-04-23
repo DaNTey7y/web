@@ -7,5 +7,5 @@ class Post(SqlAlchemyBase):
     id = sqlalchemy.Column(sqlalchemy.Integer,
                            primary_key=True, autoincrement=True)
     type = sqlalchemy.Column(sqlalchemy.String)
-    created_date = sqlalchemy.Column(sqlalchemy.DateTime)
+    created_date = sqlalchemy.Column(sqlalchemy.Date)
     created_time = sqlalchemy.Column(sqlalchemy.Time)

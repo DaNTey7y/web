@@ -2,11 +2,17 @@
 
 {% block content %}
     <div class="create-thread">
-        <a class="create-thread" href="/create_thread">
-            <h1>Создать тред</h1>
-        </a>
+        <a class="create-thread" href="/create_thread"><h1>Создать тред</h1></a>
     </div>
     {% for thread in threads %}
-
+        <div class="thread-post">
+                <h6>Аноним {{ thread.date }} {{ thread.time }} №{{ thread.post_id }}</h6>
+                {% for image in thread.images %}
+                    <img src="{{ image }}">
+                {% endfor %}
+                <h5>{{ thread.title[0:220] }}</h5>
+                <p>{{ thread.main_text[0:1100] }}</p>
+                <p class="thread-theme">Тема: {{ thread.theme[0:100] }}</p>
+        </div>
     {% endfor %}
 {% endblock %}

@@ -10,9 +10,11 @@ class Thread(SqlAlchemyBase):
                            primary_key=True, autoincrement=True)
     post_id = sqlalchemy.Column(sqlalchemy.Integer,
                                 sqlalchemy.ForeignKey("posts.id"))
+    images = sqlalchemy.Column(sqlalchemy.PickleType)
     title = sqlalchemy.Column(sqlalchemy.String, index=True)
     theme = sqlalchemy.Column(sqlalchemy.String)
-    images_amount = sqlalchemy.Column(sqlalchemy.Integer)
     main_text = sqlalchemy.Column(sqlalchemy.String)
     answers_amount = sqlalchemy.Column(sqlalchemy.Integer)
+    date = sqlalchemy.Column(sqlalchemy.String)
+    time = sqlalchemy.Column(sqlalchemy.String)
     post = orm.relation('Post')

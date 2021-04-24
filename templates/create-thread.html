@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1 class="create-thread">Создание треда</h1>
-<form action="" method="post" novalidate>
+<form action="" method="post" novalidate enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     <p>
         {{ form.title.label }}<br>

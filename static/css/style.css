@@ -25,3 +25,24 @@ main {
 body {
     background-color: #dedede;
 }
+
+.thread-post {
+    border-top: 2px solid #c9c9c9;
+    margin-bottom: 30px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.thread-post h6 {
+    color: #8c8c8c;
+}
+
+.thread-theme {
+    color: #5c5c5c;
+}
+
+.thread-post img {
+    margin-bottom: 5px;
+    margin-right: 5px;
+}

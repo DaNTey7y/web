@@ -1,10 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+    {% if post_type == 'thread' %}
+            {% for thread in posts %}
+                <div class="thread-post">
+                    <h6>Аноним {{ thread.date }} {{ thread.time }}
+                    <a>№{{ thread.post_id }}</a>
+                    </h6>
+                    {% for image in thread.images %}
+                        <img src="../{{ image }}">
+                    {% endfor %}
+                    <h5>{{ thread.title }}</h5>
+                    <p>{{ thread.main_text }}</p>
+                    <p class="thread-theme">Тема: {{ thread.theme }}</p>
+                </div>
+            {% endfor %}
+    {% else %}
+    {% endif %}
+    <form class="answer-create" action="" method="post" novalidate enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.text.label }}<br>
+            {{ form.text(class="form-control") }}<br>
+            {% for error in form.text.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endfor %}
+        </p>
+        <p>
+            {{ form.image_1.label }}<br>
+            {{ form.image_1(class="form-control") }}<br>
+            {% for error in form.image_1.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endfor %}
+            {{ form.image_2(class="form-control") }}<br>
+            {% for error in form.image_2.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endfor %}
+            {{ form.image_3(class="form-control") }}<br>
+            {% for error in form.image_3.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endfor %}
+            {{ form.image_4(class="form-control") }}<br>
+            {% for error in form.image_4.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endfor %}
+        </p>
+        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    </form>
+{% endblock %}

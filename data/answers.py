@@ -8,6 +8,7 @@ class Answer(SqlAlchemyBase):
     id = sqlalchemy.Column(sqlalchemy.Integer,
                            primary_key=True, autoincrement=True)
     post_id = sqlalchemy.Column(sqlalchemy.Integer)
+    thread_id = sqlalchemy.Column(sqlalchemy.Integer)
     answering_to = sqlalchemy.Column(sqlalchemy.Integer)
     images = sqlalchemy.Column(sqlalchemy.PickleType)
     main_text = sqlalchemy.Column(sqlalchemy.String)

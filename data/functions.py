@@ -13,3 +13,16 @@ def resize_image(path):
     maxsize = (200, 200)
     im.thumbnail(maxsize, Image.ANTIALIAS)
     im.save(path)
+
+
+def form_text(text):
+    new_text = ''
+    counter = 0
+    for symb in text:
+        if counter >= 126:
+            new_text += '\n'
+            counter = 0
+        new_text += symb
+        counter += 1
+    return new_text
+

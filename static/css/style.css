@@ -73,6 +73,10 @@ body {
     padding-right: 10px;
 }
 
+.answers {
+    margin-left: 50px;
+}
+
 .answer h6 {
     color: #8c8c8c;
 }
@@ -80,4 +84,9 @@ body {
 .answer img {
     margin-bottom: 5px;
     margin-right: 5px;
+}
+
+.answers h4 {
+    color: #c9720e;
+    margin-bottom: 20px;
 }

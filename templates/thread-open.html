@@ -15,6 +15,7 @@
             <p class="thread-theme">Тема: {{ thread.theme }}</p>
         </div>
         <div class="answers">
+            <h4>Ответы</h4>
             {% for answer in answers %}
                 <div class="answer">
                     <h6>Аноним {{ answer.date }} {{ answer.time }}

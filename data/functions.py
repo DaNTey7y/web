@@ -15,11 +15,11 @@ def resize_image(path):
     im.save(path)
 
 
-def form_text(text):
+def form_text(text, n):
     new_text = ''
     counter = 0
     for symb in text:
-        if counter >= 126:
+        if counter >= n:
             new_text += '\n'
             counter = 0
         new_text += symb

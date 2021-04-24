@@ -12,9 +12,9 @@
             {% for image in thread.images %}
                 <img src="{{ image }}">
             {% endfor %}
-            <h5>{{ thread.title[0:97] }}</h5>
+            <h5>{{ thread.title[0:126] }}</h5>
             <p>{{ thread.main_text[0:1100] }}</p>
-            <p class="thread-theme">Тема: {{ thread.theme[0:100] }}</p>
+            <p class="thread-theme">Тема: {{ thread.theme[0:146] }}</p>
         </div>
     {% endfor %}
 {% endblock %}

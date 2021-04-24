@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, redirect
 from datetime import datetime
 from data import db_session
@@ -141,7 +142,8 @@ def answer_page(post_id):
 def main():
     app.config['SECRET_KEY'] = generate_s(17)
     db_session.global_init("db/forum_content.db")
-    app.run(port=5000, host='127.0.0.1')
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 
 if __name__ == '__main__':

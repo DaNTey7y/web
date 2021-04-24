@@ -55,10 +55,10 @@ def create_thread_page():
                 db_sess.add(image)
                 db_sess.commit()
         thread = Thread()
-        thread.title = form_text(thread_title)
+        thread.title = form_text(thread_title, 156)
         thread.post_id = post.id
-        thread.theme = form_text(thread_theme)
-        thread.main_text = form_text(thread_main_text)
+        thread.theme = form_text(thread_theme, 156)
+        thread.main_text = form_text(thread_main_text, 156)
         thread.images = images
         thread.answers_amount = 0
         thread.date = post.created_date.strftime("%d/%m/%Y")
@@ -116,7 +116,7 @@ def answer_page(post_id):
                 db_sess.add(image)
                 db_sess.commit()
         answer = Answer()
-        answer.main_text = form_text(answer_text)
+        answer.main_text = form_text(answer_text, 176)
         answer.post_id = post.id
         answer.answering_to = answering_to
         answer.images = images

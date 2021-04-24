@@ -46,3 +46,38 @@ body {
     margin-bottom: 5px;
     margin-right: 5px;
 }
+
+.thread-post a {
+    color: #c9720e;
+}
+
+.thread-h1 {
+    color: #c9720e;
+    text-align: center;
+}
+
+.thread-answers {
+    border-top: 2px solid #c9c9c9;
+}
+
+.answer-create {
+    border-top: 2px solid #c9c9c9;
+    padding-top: 20px;
+}
+
+.answer {
+    border-top: 2px solid #c9c9c9;
+    background-color: #c9c9c9;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.answer h6 {
+    color: #8c8c8c;
+}
+
+.answer img {
+    margin-bottom: 5px;
+    margin-right: 5px;
+}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for thread in threads %}
+        <h1 class="thread-h1">Тред №{{ thread.post_id }}</h1>
+        <div class="thread-post">
+            <h6>Аноним {{ thread.date }} {{ thread.time }}
+                <a href="/answer/{{ thread.post_id }}">№{{ thread.post_id }}</a>
+            </h6>
+            {% for image in thread.images %}
+                <img src="../{{ image }}">
+            {% endfor %}
+            <h5>{{ thread.title }}</h5>
+            <p>{{ thread.main_text }}</p>
+            <p class="thread-theme">Тема: {{ thread.theme }}</p>
+        </div>
+        <div class="answers">
+            {% for answer in answers %}
+                <div class="answer">
+                    <h6>Аноним {{ answer.date }} {{ answer.time }}
+                    <a>№{{ answer.post_id }}</a>
+                    </h6>
+                    {% for image in answer.images %}
+                    <img src="../{{ image }}">
+                    {% endfor %}
+                    <p>{{ answer.main_text }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}

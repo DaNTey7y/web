@@ -129,12 +129,21 @@ def answer_page(post_id):
             db_sess.add(answer)
             db_sess.commit()
             return redirect(f'/thread/{answering_to}')
+        else:
+            post = None
+            for a in db_sess.query(Answer).filter(Answer.post_id == answering_to):
+                post = a
+            answer.thread_id = post.thread_id
+            db_sess.add(answer)
+            db_sess.commit()
+            return redirect(f'/thread/{post.thread_id}')
     param = dict()
+    param['title'] = f'Три.ч - Ответ №{answering_to}'
     param['post_type'] = type_of_post
     if type_of_post == 'thread':
         param['posts'] = db_sess.query(Thread).filter(Thread.post_id == answering_to)
     else:
-        pass
+        param['posts'] = db_sess.query(Answer).filter(Answer.post_id == answering_to)
     param['form'] = form
     return render_template('answer.html', **param)
 
@@ -143,7 +152,7 @@ def main():
     app.config['SECRET_KEY'] = generate_s(17)
     db_session.global_init("db/forum_content.db")
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='127.0.0.1', port=port)
 
 
 if __name__ == '__main__':

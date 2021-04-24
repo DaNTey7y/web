@@ -19,8 +19,9 @@
             {% for answer in answers %}
                 <div class="answer">
                     <h6>Аноним {{ answer.date }} {{ answer.time }}
-                    <a>№{{ answer.post_id }}</a>
+                    <a href="/answer/{{ answer.post_id }}">№{{ answer.post_id }}</a>
                     </h6>
+                    <h6 id="answer-to">>>{{ answer.answering_to }}</h6>
                     {% for image in answer.images %}
                     <img src="../{{ image }}">
                     {% endfor %}

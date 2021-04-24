@@ -90,3 +90,11 @@ body {
     color: #c9720e;
     margin-bottom: 20px;
 }
+
+.answers a {
+    color: #c9720e;
+}
+
+#answer-to {
+    color: #c9720e;
+}

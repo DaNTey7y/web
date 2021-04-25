@@ -15,6 +15,8 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 
+# Главная страница, где выводятся все треды
+
 @app.route('/', methods=['GET'])
 @app.route('/home', methods=['GET'])
 def home_page():
@@ -25,6 +27,8 @@ def home_page():
     return render_template('home.html', **params)
 
 
+# Страница где создаются, все треды
+
 @app.route('/create_thread', methods=['GET', 'POST'])
 def create_thread_page():
     form = ThreadCreateForm()
@@ -32,6 +36,7 @@ def create_thread_page():
         thread_title = form.title.data
         thread_theme = form.theme.data
         thread_main_text = form.text.data
+        # Создаем запись в таблице posts
         post = Post()
         post.type = 'thread'
         post.created_date = datetime.now().date()
@@ -39,6 +44,7 @@ def create_thread_page():
         db_sess = db_session.create_session()
         db_sess.add(post)
         db_sess.commit()
+        # Собираем фотографии с формы
         images = []
         for file in [form.image_1.data, form.image_2.data,
                      form.image_3.data, form.image_4.data]:
@@ -55,6 +61,7 @@ def create_thread_page():
                 images.append(filepath)
                 db_sess.add(image)
                 db_sess.commit()
+        # Создаем запись в таблице threads
         thread = Thread()
         thread.title = form_text(thread_title, 156)
         thread.post_id = post.id
@@ -73,6 +80,8 @@ def create_thread_page():
     return render_template('create-thread.html', **param)
 
 
+# На этой странице разваорачивается тред и все ответы к нему
+
 @app.route('/thread/<int:post_id>', methods=['GET'])
 def open_thread(post_id):
     db_sess = db_session.create_session()
@@ -82,6 +91,8 @@ def open_thread(post_id):
     param['answers'] = db_sess.query(Answer).filter(Answer.thread_id == post_id)
     return render_template('thread-open.html', **param)
 
+
+# Страница создания ответа к записи
 
 @app.route('/answer/<int:post_id>', methods=['GET', 'POST'])
 def answer_page(post_id):
@@ -94,12 +105,14 @@ def answer_page(post_id):
     form = AnswerForm()
     if form.validate_on_submit():
         answer_text = form.text.data
+        # Заводим запись в таблице posts
         post = Post()
         post.type = 'answer'
         post.created_date = datetime.now().date()
         post.created_time = datetime.now().time()
         db_sess.add(post)
         db_sess.commit()
+        # Бежим по фотографиям
         images = []
         for file in [form.image_1.data, form.image_2.data,
                      form.image_3.data, form.image_4.data]:
@@ -116,6 +129,7 @@ def answer_page(post_id):
                 images.append(filepath)
                 db_sess.add(image)
                 db_sess.commit()
+        # Создаем запись об ответе
         answer = Answer()
         answer.main_text = form_text(answer_text, 176)
         answer.post_id = post.id

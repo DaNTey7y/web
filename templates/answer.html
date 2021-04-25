@@ -3,6 +3,7 @@
 {% block content %}
     {% if post_type == 'thread' %}
         {% for thread in posts %}
+            <h1 class="answer-h1">Ответ к записи №{{ thread.post_id }}</h1>
             <div class="thread-post">
                 <h6>Аноним {{ thread.date }} {{ thread.time }}
                 <a>№{{ thread.post_id }}</a>
@@ -17,6 +18,7 @@
         {% endfor %}
     {% elif post_type == 'answer' %}
         {% for answer in posts %}
+            <h1 class="answer-h1">Ответ к записи №{{ answer.post_id }}</h1>
             <div class="answer">
                 <h6>Аноним {{ answer.date }} {{ answer.time }}
                 <a>№{{ answer.post_id }}</a>

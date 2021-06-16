@@ -10,7 +10,7 @@
                 <a href="/thread/{{ thread.post_id }}">№{{ thread.post_id }}</a>
             </h6>
             {% for image in thread.images %}
-                <img src="{{ image }}">
+                <img src="{{ image }}" width="200">
             {% endfor %}
             <h5>{{ thread.title[0:126] }}</h5>
             <p>{{ thread.main_text[0:1100] }}</p>

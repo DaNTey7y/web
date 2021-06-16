@@ -8,7 +8,7 @@
                 <a href="/answer/{{ thread.post_id }}">№{{ thread.post_id }}</a>
             </h6>
             {% for image in thread.images %}
-                <img src="../{{ image }}">
+                <img src="../{{ image }}" width="200">
             {% endfor %}
             <h5>{{ thread.title }}</h5>
             <p>{{ thread.main_text }}</p>
@@ -23,7 +23,7 @@
                     </h6>
                     <h6 id="answer-to">>>{{ answer.answering_to }}</h6>
                     {% for image in answer.images %}
-                    <img src="../{{ image }}">
+                    <img src="../{{ image }}" width="200">
                     {% endfor %}
                     <p>{{ answer.main_text }}</p>
                 </div>

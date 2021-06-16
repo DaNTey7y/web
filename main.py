@@ -4,13 +4,14 @@ from datetime import datetime
 from data import db_session
 from data.posts import Post
 from data.threads import Thread
-from data.functions import generate_s, resize_image, form_text
+from data.functions import generate_s, form_text
 from data.images import Image
 from data.answers import Answer
 from forms.thread_create import ThreadCreateForm
 from forms.answer import AnswerForm
 from sqlalchemy import desc
 from werkzeug.utils import secure_filename
+
 
 app = Flask(__name__)
 
@@ -53,7 +54,6 @@ def create_thread_page():
                 filename = generate_s(9) + '.' + filename.split('.')[-1]
                 filepath = 'static/images/' + filename
                 file.save(filepath)
-                resize_image(filepath)
                 image = Image()
                 image.post_id = post.id
                 image.title = filename
@@ -121,7 +121,6 @@ def answer_page(post_id):
                 filename = generate_s(9) + '.' + filename.split('.')[-1]
                 filepath = 'static/images/' + filename
                 file.save(filepath)
-                resize_image(filepath)
                 image = Image()
                 image.post_id = post.id
                 image.title = filename
